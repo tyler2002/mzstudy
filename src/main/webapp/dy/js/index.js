@@ -22,8 +22,7 @@ function StudyingList($scope){
             var haveLoadStudy = $scope.studiesContent[i];//study in $scope.studiesContent must have been loaded
             if(haveLoadStudy.study === study){
                 haveLoadStudy.display = 'block';
-                haveLoad = true;
-                break;
+                haveLoad = true;// can not break,because all of others should be set display = none
             } else{
                 haveLoadStudy.display = 'none';
             }
