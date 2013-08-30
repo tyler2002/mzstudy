@@ -1,26 +1,22 @@
-function StudyingList($scope){
-    $scope.studies = [
-        "AngularJS",
-        "NodeJS",
-        "Jsoup css select",
-        "Jerry css select",
-        "HttpClient 4.3",
-        "Spring 3.x"
-    ];
+function StudyingList($scope, $http){
+    $http.get("./study/liststudies").success(function(data){
+        $scope.studies = data.studyNoteList;
+        $scope.studiesContent = [
+            {
+                study : $scope.studies[0].title,
+                studyId : $scope.studies[0].id,
+                display : 'block'
+            }
+        ];
+    });
     
-    $scope.studiesContent = [
-        {
-            study : $scope.studies[0],
-            display : 'block'
-        }
-    ];
     
     $scope.load = function(){
         var study = this.study;
         var haveLoad = false;
         for(var i = 0;i<$scope.studiesContent.length;i++){
             var haveLoadStudy = $scope.studiesContent[i];//study in $scope.studiesContent must have been loaded
-            if(haveLoadStudy.study === study){
+            if(haveLoadStudy.study === study.title){
                 haveLoadStudy.display = 'block';
                 haveLoad = true;// can not break,because all of others should be set display = none
             } else{
@@ -29,7 +25,8 @@ function StudyingList($scope){
         }
         if(!haveLoad){
             $scope.studiesContent.push({
-                study : study,
+                study : study.title,
+                studyId : study.id,
                 display : 'block'
             });
         }

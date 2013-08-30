@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-2">
                 <div class="alert alert-success row" ng-repeat="study in studies">
-                    <button type="button" class="btn btn-link" ng-click="load()">{{study}}</button>
+                    <button type="button" class="btn btn-link" ng-click="load()">{{study.title}}</button>
                 </div>
             </div>
             <div class="col-lg-10" id="studies_content">

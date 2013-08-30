@@ -19,13 +19,30 @@
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task-3.2.xsd">
     
-    <context:component-scan base-package="org.mz.mzstudy.controller" />
+    <context:component-scan base-package="org.mz.mzstudy" />
 
     <!--To enable @RequestMapping process on type level and method level-->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true" >
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json" />
+                <property name="features">
+                    <array>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </array>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+    <bean id="jsonView" class="com.alibaba.fastjson.support.spring.FastJsonJsonView" />
+    
+    <bean id="applicationHelper" class="org.mz.mzstudy.common.ApplicationHelper"></bean>
     
     <!-- 导入其它模块化的配置 -->
     <import resource="classpath*:conf/context.xml" />

@@ -1,0 +1,11 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mz.mzstudy.dao.StudyDao">
+    <resultMap id="listStudiesResultMap" type="org.mz.mzstudy.beans.StudyNote">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+    </resultMap>
+    <select id="listStudies" resultMap="listStudiesResultMap">
+        select id,title from study_notes
+    </select>
+</mapper>
