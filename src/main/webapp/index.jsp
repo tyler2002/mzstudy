@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mzstudy</title>
+        <link rel="shortcut icon" href="./static/favicon.ico">
         <link href="./static/css/bootstrap.min.css" rel="stylesheet">
         <script type="text/javascript" src="./static/js/angular.min.js"></script>
         <script type="text/javascript" src="./dy/js/index.js"></script>
