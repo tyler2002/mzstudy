@@ -29,22 +29,30 @@ public class StudyController extends BaseController{
     public ModelAndView listStudies() {
         setSqlSessionFactory();
         SqlSession session = sqlSessionFactory.openSession();
-        StudyDao studyDao = session.getMapper(StudyDao.class);
-        List<StudyNote> studies = studyDao.listStudies();
-        ModelAndView modelAndView = new ModelAndView("jsonView");
-        modelAndView.addObject(studies);
-        return modelAndView;
+        try{
+            StudyDao studyDao = session.getMapper(StudyDao.class);
+            List<StudyNote> studies = studyDao.listStudies();
+            ModelAndView modelAndView = new ModelAndView("jsonView");
+            modelAndView.addObject(studies);
+            return modelAndView;
+        } finally{
+            session.close();
+        }
     }
     
     @RequestMapping(method = RequestMethod.GET, value = "/getStudyNote/{id}")
     public ModelAndView getStudyNote(@PathVariable Integer id) {
         setSqlSessionFactory();
         SqlSession session = sqlSessionFactory.openSession();
-        StudyDao studyDao = session.getMapper(StudyDao.class);
-        String studyNote = studyDao.getStudyNote(id);
-        ModelAndView modelAndView = new ModelAndView("jsonView");
-        modelAndView.addObject("studyNote", studyNote);
-        return modelAndView;
+        try{
+            StudyDao studyDao = session.getMapper(StudyDao.class);
+            String studyNote = studyDao.getStudyNote(id);
+            ModelAndView modelAndView = new ModelAndView("jsonView");
+            modelAndView.addObject("studyNote", studyNote);
+            return modelAndView;
+        } finally{
+            session.close();
+        }
     }
     
     @RequestMapping(method = RequestMethod.POST, value = "/updateStudyNote/{id}")
@@ -53,14 +61,18 @@ public class StudyController extends BaseController{
         JSONObject bodyObj = JSON.parseObject(body);
         String studyNote = bodyObj.getString("studyNote");
         SqlSession session = sqlSessionFactory.openSession();
-        StudyDao studyDao = session.getMapper(StudyDao.class);
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", id);
-        param.put("noteContent", studyNote);
-        studyDao.updateStudyNote(param);
-        ModelAndView modelAndView = new ModelAndView("jsonView");
-        modelAndView.addObject("success", true);
-        modelAndView.addObject("msg", "保存成功");
-        return modelAndView;
+        try{
+            StudyDao studyDao = session.getMapper(StudyDao.class);
+            Map<String, Object> param = new HashMap<String, Object>();
+            param.put("id", id);
+            param.put("noteContent", studyNote);
+            studyDao.updateStudyNote(param);
+            ModelAndView modelAndView = new ModelAndView("jsonView");
+            modelAndView.addObject("success", true);
+            modelAndView.addObject("msg", "保存成功");
+            return modelAndView;
+        } finally{
+            session.close();
+        }
     }
 }
