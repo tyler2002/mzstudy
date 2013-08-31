@@ -18,9 +18,13 @@ CREATE TABLE `study_notes` (
   `note_content` mediumtext COMMENT '笔记内容',  
   PRIMARY KEY (`id`)  
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;  
+####init study list
+insert into study_notes(title) values('AngularJS');  
+insert into study_notes(title) values('NodeJS');  
+insert into study_notes(title) values('GitHub');  
 
 #Config  
-   edit src\main\resources\conf\database.properties  to modify the db connection
+edit src\main\resources\conf\database.properties  to modify the db connection
 
 #Start  
-   start the tomcat and browse http://localhost:<port>/mzstudy
+start the tomcat and browse http://localhost:<port>/mzstudy
