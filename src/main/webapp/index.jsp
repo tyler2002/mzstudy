@@ -25,8 +25,8 @@
     <div class="container" ng-controller="StudyingList">
         <div class="row">
             <div class="col-lg-2">
-                <div class="alert alert-success row" ng-repeat="study in studies">
-                    <button type="button" class="btn btn-link" ng-click="load()">{{study.title}}</button>
+                <div class="list-group">
+                    <a href="#" class="list-group-item" ng-repeat="study in studies" ng-click="load()">{{study.title}}</a>
                 </div>
             </div>
             <div class="col-lg-10" id="studies_content">
