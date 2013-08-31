@@ -3,10 +3,24 @@ mzstudy
 
 a project just for yourself to note what you are learning
 
-I am now just begin develop it,just wait for it!
+Now, you can use this project to note what you have learned and what you are learning simplely.
 
-The first version will be:
-1. use bootstrap3 container to layout
-   while col-lg-2 to show a list of studies,and col-lg-10 to show a textarea now studying
-2. I will use angularJS just for frontend
-3. I will use Spring3 and Mybatis3 for backend
+
+#Install
+   jdk7.0  +  tomcat7.0  +  mysql5.5
+
+create database study;  
+use study;  
+CREATE TABLE `study_notes` (  
+  `id` int(11) NOT NULL AUTO_INCREMENT,  
+  `title` varchar(256) NOT NULL COMMENT '学习标题',  
+  `href` varchar(256) DEFAULT NULL,  
+  `note_content` mediumtext COMMENT '笔记内容',  
+  PRIMARY KEY (`id`)  
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;  
+
+#Config  
+   edit src\main\resources\conf\database.properties  to modify the db connection
+
+#Start  
+   start the tomcat and browse http://localhost:<port>/mzstudy
