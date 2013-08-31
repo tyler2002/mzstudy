@@ -1,6 +1,7 @@
 package org.mz.mzstudy.dao;
 
 import java.util.List;
+import java.util.Map;
 import org.mz.mzstudy.beans.StudyNote;
 
 /**
@@ -10,4 +11,5 @@ import org.mz.mzstudy.beans.StudyNote;
  */
 public interface StudyDao {
     List<StudyNote> listStudies();
+    void updateStudyNote(Map<String, Object> param);
 }

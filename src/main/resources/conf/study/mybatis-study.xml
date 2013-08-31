@@ -8,4 +8,7 @@
     <select id="listStudies" resultMap="listStudiesResultMap">
         select id,title from study_notes
     </select>
+    <update id="updateStudyNote" parameterType="map">
+        update study_notes set note_content = #{noteContent} where id=#{id}
+    </update>
 </mapper>

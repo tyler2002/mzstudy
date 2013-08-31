@@ -31,13 +31,13 @@
             </div>
             <div class="col-lg-10" id="studies_content">
                 <div ng-repeat="studyContent in studiesContent">
-                    <textarea class="form-control" style="height:600px;display:{{studyContent.display}};" name="{{studyContent.study}}"></textarea>
+                    <textarea class="form-control" style="height:600px;display:{{studyContent.display}};" ng-model="studyContent.studyNote" name="{{studyContent.study}}"></textarea>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-offset-11" style="margin-top: 10px;">
-                <button type="button" class="btn btn-success" style="width: 79px;">Save</button>
+                <button type="button" class="btn btn-success" style="width: 79px;" ng-click="save()">Save</button>
             </div>
         </div>
     </div>
