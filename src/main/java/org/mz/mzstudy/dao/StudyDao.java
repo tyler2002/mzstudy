@@ -11,5 +11,6 @@ import org.mz.mzstudy.beans.StudyNote;
  */
 public interface StudyDao {
     List<StudyNote> listStudies();
+    String getStudyNote(Integer id);
     void updateStudyNote(Map<String, Object> param);
 }

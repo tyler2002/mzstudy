@@ -40,7 +40,8 @@
     </mvc:annotation-driven>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-    <bean id="jsonView" class="com.alibaba.fastjson.support.spring.FastJsonJsonView" />
+    <bean id="jsonView" class="com.alibaba.fastjson.support.spring.FastJsonJsonView" >
+    </bean>
     
     <bean id="applicationHelper" class="org.mz.mzstudy.common.ApplicationHelper"></bean>
     

@@ -11,4 +11,7 @@
     <update id="updateStudyNote" parameterType="map">
         update study_notes set note_content = #{noteContent} where id=#{id}
     </update>
+    <select id="getStudyNote" resultType="string" parameterType="int">
+        select note_content from study_notes where id=#{id}
+    </select>
 </mapper>

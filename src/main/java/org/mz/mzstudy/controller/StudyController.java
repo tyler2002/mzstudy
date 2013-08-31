@@ -36,6 +36,17 @@ public class StudyController extends BaseController{
         return modelAndView;
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/getStudyNote/{id}")
+    public ModelAndView getStudyNote(@PathVariable Integer id) {
+        setSqlSessionFactory();
+        SqlSession session = sqlSessionFactory.openSession();
+        StudyDao studyDao = session.getMapper(StudyDao.class);
+        String studyNote = studyDao.getStudyNote(id);
+        ModelAndView modelAndView = new ModelAndView("jsonView");
+        modelAndView.addObject("studyNote", studyNote);
+        return modelAndView;
+    }
+    
     @RequestMapping(method = RequestMethod.POST, value = "/updateStudyNote/{id}")
     public ModelAndView updateStudyNote(@PathVariable Integer id, @RequestBody String body) {
         setSqlSessionFactory();
