@@ -13,14 +13,19 @@ function StudyingList($scope, $http){
                 }
             ];
         });
-        
+        $scope.selected = defaultStudy.id;
     });
+    
+    $scope.studyClass = function(study){
+        return study.id === $scope.selected ? 'list-group-item active' : "list-group-item";
+    };
+    
     /**
      * 点击学习标题，加载对应的学习笔记
      */
-    $scope.load = function(){
-        var study = this.study;
+    $scope.load = function(study){
         var haveLoad = false;
+        $scope.selected = study.id;
         for(var i = 0;i<$scope.studiesContent.length;i++){
             var haveLoadStudy = $scope.studiesContent[i];//study in $scope.studiesContent must have been loaded
             

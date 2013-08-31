@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-2">
                 <div class="list-group">
-                    <a href="#" class="list-group-item" ng-repeat="study in studies" ng-click="load()">{{study.title}}</a>
+                    <a href="javascript: void(0);" ng-repeat="study in studies" ng-class="studyClass(study)" ng-click="load(study)">{{study.title}}</a>
                 </div>
             </div>
             <div class="col-lg-10" id="studies_content">
